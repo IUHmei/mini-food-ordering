@@ -1,0 +1,35 @@
+### Test GET home
+GET http://localhost:3000
+
+### Test Register (logout test)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "logout-test@example.com",
+  "password": "password123",
+  "firstName": "Logout",
+  "lastName": "Test"
+}
+
+### Test Login (logout test)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "logout-test@example.com",
+  "password": "password123"
+}
+
+### Test Get Profile (before logout) - Use token from login above
+GET http://localhost:3000/api/auth/profile
+Authorization: Bearer YOUR_TOKEN_FROM_LOGIN
+
+### Test Logout - Use same token
+POST http://localhost:3000/api/auth/logout
+Authorization: Bearer YOUR_TOKEN_FROM_LOGIN
+
+### Test Get Profile (after logout) - Token should be blacklisted
+GET http://localhost:3000/api/auth/profile
+Authorization: Bearer YOUR_TOKEN_FROM_LOGIN
+
