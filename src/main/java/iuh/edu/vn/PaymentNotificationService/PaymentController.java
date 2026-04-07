@@ -18,8 +18,15 @@ public class PaymentController {
         // [cite: 78]
         
         // Lưu ý: Sau này bạn sẽ viết thêm dòng code gọi sang Order Service (Người 4) ở đây 
-        
+        sendNotification(request.getUserId(), request.getOrderId());
         return "Thanh toán thành công cho đơn hàng: " + request.getOrderId();
+    }
+    private void sendNotification(String userId, String orderId) {
+        System.out.println("\n========================================");
+        System.out.println("THÔNG BÁO MỚI:");
+        // In đúng mẫu yêu cầu: User A đã đặt đơn #123 thành công [cite: 78, 185]
+        System.out.println("User " + userId + " đã đặt đơn #" + orderId + " thành công!");
+        System.out.println("========================================\n");
     }
 }
 
